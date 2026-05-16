@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Graph {
-
     private Map<Integer, Vertex> vertices;
 
     private Map<Integer, List<Integer>> adjacencyList;
@@ -25,14 +24,13 @@ public class Graph {
     }
 
     public void printGraph() {
-        System.out.println("Graph Adjacency List:");
-        List<Integer> sortedKeys = new ArrayList<>(adjacencyList.keySet());
-        Collections.sort(sortedKeys);
-        for (int id : sortedKeys) {
-            System.out.println("  " + id + " - " + adjacencyList.get(id));
+        System.out.println("Adjacency List:");
+        List<Integer> sortedIds = new ArrayList<>(adjacencyList.keySet());
+        Collections.sort(sortedIds);
+        for (int id : sortedIds) {
+            System.out.println("  " + id + " -> " + adjacencyList.get(id));
         }
     }
-
     public void bfs(int start) {
         if (!vertices.containsKey(start)) return;
 
@@ -42,7 +40,7 @@ public class Graph {
         visited.add(start);
         queue.add(start);
 
-        System.out.print("BFS from " + start + ": ");
+        System.out.print("BFS traversal: ");
 
         while (!queue.isEmpty()) {
             int current = queue.poll();
@@ -62,7 +60,7 @@ public class Graph {
         if (!vertices.containsKey(start)) return;
 
         Set<Integer> visited = new HashSet<>();
-        System.out.print("DFS from " + start + ": ");
+        System.out.print("DFS traversal: ");
         dfsHelper(start, visited);
         System.out.println();
     }
@@ -70,7 +68,6 @@ public class Graph {
     private void dfsHelper(int current, Set<Integer> visited) {
         visited.add(current);
         System.out.print(current + " ");
-
         for (int neighbor : adjacencyList.get(current)) {
             if (!visited.contains(neighbor)) {
                 dfsHelper(neighbor, visited);
