@@ -44,7 +44,7 @@ public class Experiment {
     }
 
     public void runMultipleTests() {
-        System.out.println("=== Running Performance Experiments ===");
+        System.out.println("Running Performance Experiments");
         System.out.println();
 
         for (int i = 0; i < graphSizes.length; i++) {
