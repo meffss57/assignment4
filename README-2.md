@@ -1,5 +1,22 @@
 Assignment report:
 
+
+An adjacency list stores the graph as a collection of lists, one per vertex , where each list contains the IDs of that vertex's neighbors. In this project it is implemented as a HashMap<Integer, List<Integer>>.
+For the 10-vertex graph it looks like this in memory:
+0 → [1, 2]
+1 → [3, 4]
+2 → [5, 6]
+3 → [7]
+4 → [8]
+5 → [9]
+6 → [7]
+7 → [9]
+8 → [9]
+9 → []
+
+
+
+
 Double the vertices and edges, roughly double the time. This is because both algorithms visit each vertex and each edge exactly once. Adding more vertices adds more iterations to the while-loop (BFS) or more recursive calls (DFS). Adding more edges adds more iterations to the inner for-each loop. Neither algorithm does any repeated work, so there's no exponential or quadratic blowup.
 
 DFS is consistently faster across all three sizes. The reason is overhead. BFS uses a LinkedList-backed Queue every queue.add() and queue.poll() involves Java creating and destroying node objects in the linked list, which costs memory allocation time. DFS uses the call stack through recursion, which after JVM optimization is cheaper per operation. Both are O(V + E) same complexity class but DFS has a smaller constant factor in this implementation.

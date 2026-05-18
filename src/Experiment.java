@@ -18,7 +18,6 @@ public class Experiment {
             if (i + 1 < size) g.addEdge(i, i + 1);
             if (i + 2 < size) g.addEdge(i, i + 2);
         }
-        // Long-range edges for structural variety
         for (int i = 0; i < size - 5; i += 5) {
             g.addEdge(i, i + 4);
         }
@@ -27,14 +26,11 @@ public class Experiment {
 
     public long[] runTraversals(Graph g) {
         long[] times = new long[2];
-
-        // Measure BFS execution time
         long startBfs = System.nanoTime();
         g.bfs(0);
         long endBfs = System.nanoTime();
         times[0] = endBfs - startBfs;
 
-        // Measure DFS execution time
         long startDfs = System.nanoTime();
         g.dfs(0);
         long endDfs = System.nanoTime();
